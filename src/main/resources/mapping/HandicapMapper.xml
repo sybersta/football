@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.football.mapper.HandicapMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.football.entity.HandicapEntity">
+        <result column="id" property="id" />
+        <result column="court" property="court" />
+        <result column="homeGoal" property="home_goal" />
+        <result column="race" property="race" />
+        <result column="time" property="time" />
+        <result column="timeSeq" property="time_seq" />
+
+        <result column="visitingGoal" property="visiting_goal" />
+        <result column="handicap" property="handicap" />
+        <result column="homeOdds" property="home_odds" />
+        <result column="visitingOdds" property="visiting_odds" />
+    </resultMap>
+<!--第一个进球后的赢盘率-->
+    <select id="hand1" resultType="com.example.football.entity.HandicapAnalysisEntity">
+select (b.home_goal-a.home_goal)-(b.visiting_goal-a.visiting_goal)+a.handicap result,b.league,a.time,
+a.race,a.time_seq handicap_time_seq,c.time_seq goal_line_time_seq,b.home_goal,b.visiting_goal,b.total_goal,a.handicap current_handicap,b.handicap origin_handicap,b.goal_line origin_goal_line,
+c.goal_line current_goal_line,b.total_goal-c.goal_line goal_line_result,0 as team
+from ${handicapTabeleName} a left join t_race b on a.race=b.id
+left join ${goalLineTableName} c on a.race=c.race
+where b.id=#{id}
+    </select>
+
+</mapper>

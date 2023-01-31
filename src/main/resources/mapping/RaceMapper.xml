@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.football.mapper.RaceMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.football.entity.RaceEntity">
+        <result column="id" property="id" />
+        <result column="date" property="date" />
+        <result column="goalLine" property="goal_line" />
+        <result column="handicap" property="handicap" />
+        <result column="homeTeam" property="home_team" />
+        <result column="homeTeamName"  property="home_team_name" />
+
+        <result column="league"  property="league" />
+        <result column="leagueName"  property="league_name" />
+        <result column="totalGoal"  property="total_goal" />
+        <result column="visitingTeam"  property="visiting_team" />
+
+        <result column="visitingTeamName" property="visiting_team_name" />
+        <result column="corner" property="corner" />
+        <result column="halfHomeCorner" property="half_home_corner" />
+        <result column="halfHomeGoal" property="half_home_goal" />
+        <result column="halfVisitingCorner"  property="half_visiting_corner" />
+        <result column="halfVisitingGoal" property="half_visiting_goal" />
+        <result column="homeCorner" property="home_corner" />
+        <result column="homeGoal" property="home_goal" />
+        <result column="visitingCorner" property="visiting_corner" />
+        <result column="visitingGoal" property="visiting_goal" />
+    </resultMap>
+
+    <select id="Sel" resultType="com.example.football.entity.RaceEntity">
+    </select>
+
+</mapper>

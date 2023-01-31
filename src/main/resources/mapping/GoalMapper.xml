@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.football.mapper.GoalMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.football.entity.GoalEntity">
+        <result column="id" property="id" />
+        <result column="race" property="race" />
+        <result column="team" property="team" />
+        <result column="time" property="time" />
+        <result column="currentGoal" property="current_goal" />
+        <result column="currentTotalGoal" property="current_total_goal" />
+        <result column="seq" property="seq" />
+    </resultMap>
+
+    <select id="getFirstGoalList" resultType="com.example.football.entity.GoalEntity">
+        select a.* from t_goal a left join t_race b on a.race =b.id
+        where a.current_total_goal=1 and team=0
+          <if test="handicap!=null">
+          and b.handicap=#{handicap}
+          </if>
+<if test ="goalLine!=null">
+         and b.goal_line=#{goalLine}
+</if>
+    </select>
+
+</mapper>

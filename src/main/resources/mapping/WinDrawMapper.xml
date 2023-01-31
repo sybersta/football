@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.football.mapper.WinDrawMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.football.entity.WinDrawEntity">
+        <result column="id"  property="id" />
+        <result column="court"  property="court" />
+        <result column="homeGoal"  property="home_goal" />
+        <result column="race"  property="race" />
+        <result column="time"  property="time" />
+        <result column="timeSeq"  property="time_seq" />
+
+        <result column="visitingGoal"  property="visiting_goal" />
+        <result column="drawOdds" property="draw_odds" />
+        <result column="lostOdds"  property="lost_odds" />
+        <result column="winOdds"  property="win_odds" />
+    </resultMap>
+
+    <select id="Sel" resultType="com.example.football.entity.WinDrawEntity">
+    </select>
+
+</mapper>
